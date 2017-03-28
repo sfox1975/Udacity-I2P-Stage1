@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Option Spread Risks</title>
+</head>
+<body>
+    <h1 class="title">Two Unusual Ways to Lose your Shirt <br>Trading Options Spreads</h1>
+    <div class="subtitle">
+
+        <h2>By <a href="#about">Stephen Fox</a><br>
+        <small>Co-Founder<br>Android Alpha Fund LLC</small><br><br></h2>
+
+        <div class="image1"><img src="images/Logo.png" alt="This is a logo image"></div>
+    </div>
+    <div>
+        <div class="section" id="introduction">
+
+            <p>Trading options can be extremely risky, potentially leaving a trader exposed to unbounded losses. One popular way to hedge this risk is to trade options spreads. A spread involves the simultaneous buying and selling of options on the same stock. A properly constructed spread trade can remove the unbounded nature of certain options strategies and allow traders to carefully define the amount of risk embedded in any given trade they make. However, there are several poorly understood risks involved with spread trading. In this article, I will cover two of them.</div>
+
+        <div class="section" id="overview">
+
+            <h3>Options Spreads: An Overview</h3>
+
+            <p>The best way to illustrate an options spread trade is by way of example. Let's say it is mid March 2016 and Apple (ticker = <a href="http://finance.yahoo.com/q?s=aapl&ql=1">AAPL</a>) is trading for about $100 per share. Our protagonist trader believes Apple shares are going to fall in value sometime over the next 4 months, but he is not confident in the magnitude of the fall nor is he willing to risk a huge amount of capital on this hunch. One option would be to enter into an options spread trade. Consider the following two AAPL options contracts:
+            <ul>
+            <li>$100 call expiring July 15th 2016; Price = $6.80</li>
+            <li>$110 call expiring July 15th 2016; Price = $2.70</li>
+            </ul>
+            <p>A call option gives the contract holder the right to buy the stock at the strike price (in this case $100 and $110, for the two respective contracts) on or before the expiry date (July 15th, 2016 in this case). Since the trading hypothesis is that AAPL stock is going to fall from its current value ($100) in the next 4 months, the trader could simultaneously sell the $100 call and buy the $110 call, bringing in a $4.10 credit ($6.80 - $2.70).
+
+            <p>If AAPL is below $100 on July 15th, 2016, both contracts will expire worthless (i.e. one would not exercise a right to pay $100 or more for AAPL when one could buy the shares on the market for a lower price) and the trader keeps the $4.10 as profit.
+
+            <p>Let's say the trader's prediction did not come true and AAPL in fact soared to $120 per share over the next 4 months instead. In this case, both options contracts will expire <q>in-the-money</q>, since their strike prices are lower than the stock price. In this case, it pays for the contract holders to exercise their rights to buy AAPL at the specified strike prices, since they could turn around and sell AAPL at a higher price on the market.
+
+            <p>Our trader owns the $110 call (he is <q>long</q> this contract) and owes the $100 call (he is <q>short</q> this contract). The counterparty (the holder of the $100 call contract) will exercise their right to buy AAPL at $100 and the trader will exercise their right to buy AAPL at $110. Once the dust settles, the net effect for our trader is that they will lose $5.90, through the following cash flows:
+            <ol>
+            <li>$4.10 credit at time of trade</li>
+            <li>$100 credit at expiry, due to counterparty exercising the short</li>
+            <li>$110 debit at expiry, due to trader exercising the long</li>
+            </ol>
+
+            <p>Although the trader's hunch about AAPL was wrong (it soared instead of sinking), his loss was limited to $5.90, regardless of how much above $110 the share price might have gone. In contrast, if he had simply sold the $100 call, his losses would have been potentially unbounded, since there is no theoretical limit on how high a share price can go.
+
+            <p>The payoff from the spread trade is shown below:
+
+            <div class="image2"><img src="images/AAPL.png" alt="This is a stock chart image"></div>
+
+            <p>I will leave it as an exercise for the reader to prove that the break-even price for the trader is AAPL closing on July 15th at $104.10. Above this value, the trader loses money and below this value, the trader makes money. The curious reader can gain more knowledge on spreads <a href="https://en.wikipedia.org/wiki/Options_spread">here</a>.
+
+            <p>So in theory, spread trading allows one to greatly diminish risks when trading options. In reality, there are many pitfalls to spread trading, many of which are not discussed in the myriad books and websites written about options trading. When I began professionally trading options in 2007, I was blissfully unaware of these pitfalls and unfortunately learnt about each and every one of these obscure risks the hard way, by losing money. By writing this article, I hope to prevent new traders from making the same mistakes I did. I have picked two somewhat unusual risks to discuss today:
+            <ol>
+            <li><a href="#dividends">Dividends</a></li>
+            <li><a href="#busts">Trade busts</a></li>
+            </ol>
+            <p>Each of these risks will be discussed in more detail now.
+        </div>
+        <div class="section" id="dividends">
+
+            <h3>Dividend Risk</h3>
+
+            <p>In April 2008, dividend risk nearly wiped out my trading business. A few months earlier, I had founded a proprietary trading firm with my brother-in-law and our first few months had been a stellar success. Our system was built to capitalize on short-lived pricing inefficiencies and the models that formed the basis for our strategy were proving to be remarkably effective in the real options markets. Then, in mid April we entered into a spread trade involving BPT call options. BPT is a stock that derives its value based on the value of mineral rights in the Prudhoe Bay oil field on the North Slope of Alaska. For our purposes, all you really need to know is that this dividend is LARGE on a per share basis (about $12 per year back in 2008, paid quarterly).
+
+            <p>We had sold and bought an equal number of BPT calls, all of which were deeply in-the-money. At the time of the trade, we had made what we believed was a modest arbitrage profit on the trade. Our plan was to simply hold the options until expiry and then collect the profit. Under normal circumstances, it does not pay to early exercise call options, since it means that you need to put up the capital for the stock purchase earlier, thus forfeiting the time value of money.
+
+            <p>We woke up one morning in April (April 14th to be exact) to discover that we had been early assigned on all of the short calls we had sold, meaning instead of having a call spread, we now owned a short stock position and an offsetting amount of long call contracts. Now, it turns out then when you are short a stock, on the ex-dividend date for the stock, you owe the dividend on the stock (think of this as the mirror image of owning stock, where you would collect any dividend that the stock pays). In the case of our BPT position, this turned out to be tens of thousands of dollars worth of dividend payments, dwarfing any supposed arbitrage profit that we had made on the opening trade.
+
+            <p>Just because you are short dividend-paying calls does not guarantee you will assigned on them. In the extreme, the counterparty will not exercise calls to capture dividends if the call strike price is out-of-the-money as this would not make economical sense. To determine whether you are likely to be early assigned on a call, one can utilize <a href="https://en.wikipedia.org/wiki/Put%E2%80%93call_parity">put-call parity</a>. In the special case being considered here, one will reach the conclusion that it makes sense to early exercise the call ahead of the ex-dividend date if the market price of the corresponding put (the put with the same strike and expiry date as the call under consideration) is lower than the value of the dividend payment minus any interest cost associated with early exercise.
+
+            <p>We learnt a valuable lesson that day, namely that you need to be fully aware of any dividend paying stocks in your call portfolio, and to take defensive action (close the position, exercise offsetting calls, buy stock etc.) ahead of the ex-dividend date. We have since automated this process for our own portfolio, relying on a daily check against several unique sources of dividend data, since no single source is 100% accurate (another lesson learnt the hard way, but that is for another day).
+        </div>
+        <div class="section" id="busts">
+
+            <h3>Trade Bust Risk</h3>
+
+            <p>When I started trading options spreads, I operated under the assumption that once a trade took place on an options exchange there was no going back on the trade. This rosy and naive perspective turned out to be worse than wrong, and in fact exchanges can and do routinely undo trades, opening up a huge risk for spread traders, a risk that is essentially impossible to fully hedge against.
+
+            <p>Here is how it works: each options exchange has its own rule for dictating when a trade is <q>clearly erroneous</q> and thus can be nullified by the exchange or adjusted to a different price by the exchange. For example, the nation's oldest options exchange, the Chicago Board Options Exchange (CBOE) maintains its erroneous trade policy <a href="http://wallstreet.cch.com/CBOETools/PlatformViewer.asp?searched=1&selectednode=chp_1_1_6_2_10&CiRestriction=6.25&manual=%2Fcboe%2Frules%2Fcboe-rules%2F">here</a>, as Rule 6.25.
+
+            <p>The details differ slightly between each exchange, but the basic idea is the same. If an options trader enters into a trade that <s>they regret doing</s> is erroneous (e.g. hitting buy instead of sell; entering a crazy price etc.), they have a certain duration (the actual value of which depends on their status with the exchange) during which they can petition exchange officials to review the trade and nullify it or adjust the price to something more favorable. The exchange officials then review the trade against their clearly erroneous transaction rule and determine if it qualifies for a trade bust. In some cases, a supposedly <q>erroneous</q> transaction requires a fairly small deviation from the fair market price at the time of the trade. For example, the CBOE rules state that a trade can be considered erroneous if the trade price deviates from the market price by the amounts shown in the following table:
+
+            <table class="table" id="t01">
+                <tr>
+                    <th>Theoretical Price</th>
+                    <th>Minimum Amount</th>
+                </tr>
+                <tr>
+                    <td>Below $2.00</td>
+                    <td>$0.25</td>
+                </tr>
+                <tr>
+                    <td>$2.00 to $5.00</td>
+                    <td>$0.40</td>
+                </tr>
+                <tr>
+                    <td>Above $5.00 to $10.00</td>
+                    <td>$0.50</td>
+                </tr>
+                <tr>
+                    <td>Above $10.00 to $20.00</td>
+                    <td>$0.80</td>
+                </tr>
+                <tr>
+                    <td>Above $20.00 to $50.00</td>
+                    <td>$1.00</td>
+                </tr>
+                <tr>
+                    <td>Above $50.00 to $100.00</td>
+                    <td>$1.50</td>
+                </tr>
+                <tr>
+                    <td>Above $100.00</td>
+                    <td>$2.00</td>
+                </tr>
+            </table>
+
+            <p>By way of example, imagine the $100 AAPL call under consideration has a theoretical value of $7.35. Then, according to the CBOE rules, any transaction in this option occuring at a price below $6.85 ($7.35 minus $0.50) or above $7.85 ($7.35 plus $0.50) could be broken (i.e. reversed). In a fast moving market, it is easy to see how one could routinely see prices that deviate by this fairly small amounts on a regular basis.
+
+            <p>If you were the counterparty on the trade, the exchange or your broker will notify you that the trade has been nullified or adjusted.
+
+            <p>This might sound all very well and good. Afterall, it promotes fair markets right? WRONG, in the case of spread traders, where your trade by definition consists of both buy and sell transactions. If one portion of this trade is nullified, you are no longer holding a spread position. You are now holding a naked option position and are the proud owner of all the risk such a position entails, whether you wanted it or not. To illustrate the mechanics of a trade bust and the subsequent horror it can unleash on a spread trader, lets use the same Apple example from earlier, where the trader believes Apple will drop in value and thus enters the following bear spread:
+
+            <ul>
+                <li>Sell a $100 call expiring July 15th 2016; Price = $6.80</li>
+                <li>Buy a $110 call expiring July 15th 2016; Price = $2.70</li>
+            </ul>
+
+            <p>The net credit from this transaction was $4.10. Now, lets say the seller on the $110 call has remorse because the value of Apple has soared in the interim, and they discover they have grounds for appealing the transaction (e.g. $2.70 was sufficiently far enough away from the theoretical price). They then appeal the transaction, the exchange officials review it and decide to bust the buy side. Our protagonist trader learns of this bust the next day (yes, unbelievably it can take until the next day to learn about a bust, in some circumstances). Meanwhile, overnight Apple stock has soared to $125 per share on some unexpected, positive news. Since the buy transaction was nullified, our trader only holds the sell transaction, for which he brought in $6.80. With Apple at $125 and months until expiry, this option now trades for well in excess of $30 on the market, and the trader loses a fortune closing out the unhedged position (the actual loss is $6.80 minus the cost of buying the $100 call on the market).
+
+            <p>The trader never wanted an unhedged short option and had specifically bought a spread to protect themselves from massive stock price swings, but in this instance it did not matter. Once the trade bust process had run its course, they were left holding only the short position and suffered a substantial loss due to no fault of their own. There is no good way to fully hedge yourself against this risk (short of not spread trading at all), and spread traders should fully understand this fact.
+        </div>
+        <div class="about" id="about">
+
+            <h3>About the Author</h3>
+
+            <p>Steve has spent the better part of a decade trading options and options spreads. <br>He is a co-founder of <a href="http://www.androidalpha.com">Android Alpha Fund LLC</a>, a proprietary options trading firm.
+        </div>
+    </div>
+</body>
+</html>
